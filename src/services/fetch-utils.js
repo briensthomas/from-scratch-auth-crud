@@ -1,6 +1,6 @@
 import { client } from './client';
 
-
+// Auth Functions
 export async function signUpUser(email, password) {
   const { user, error } = await client.auth.signUp({
     email: email,
@@ -19,6 +19,7 @@ export async function logout() {
   await client.auth.signOut();
 }
 
+// Fetch Functions
 export async function fetchBooks() {
   const response = await client.from('Books')
     .select('*');

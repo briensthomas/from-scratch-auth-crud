@@ -14,7 +14,6 @@ export default function AuthPage({ setUser }) {
 
     const user = await signUpUser(signUpEmail, signUpPassword);
     setUser(user);
-    console.log(user);
   }
 
   async function handleSignIn(e) {
@@ -22,8 +21,6 @@ export default function AuthPage({ setUser }) {
 
     const user = await signInUser(signInEmail, signInPassword);
     setUser(user);
-    console.log(user);
-
   }
 
   return (
@@ -46,10 +43,14 @@ export default function AuthPage({ setUser }) {
       {/* Sign In Existing User */}
       <form onSubmit={handleSignIn}>
         <label>Email
-          <input value={signInEmail} onChange={(e) => setSignInEmail(e.target.value)} />
+          <input value={signInEmail} 
+            onChange={(e) => setSignInEmail(e.target.value)}
+            type='email' />
         </label>
         <label>Password
-          <input value={signInPassword} onChange={(e) => setSignInPassword(e.target.value)} />
+          <input value={signInPassword} 
+            onChange={(e) => setSignInPassword(e.target.value)}
+            type='password' />
         </label>
         <button>Sign In</button>
       </form>

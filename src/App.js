@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 
 import AuthPage from './AuthPage';
@@ -32,28 +33,50 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">List Page</Link>
+              <Link to="/CreateBook">Add New Book</Link>
             </li>
-            <li><button onClick={handleLogout}>Logout Button</button></li>
+            <li>
+              <Link to="/books">List Page</Link>
+            </li>
+            {
+              user && <li>
+                <button onClick={handleLogout}>Logout Button</button>
+              </li> 
+            }
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/">
-            <AuthPage setUser={setUser} />
+          {/* Route to Auth Page if NOT a user; 
+          if a user, redirect to /books */}
+          <Route exact path="/">
+            {
+              !user
+                ? <AuthPage setUser={setUser} />
+                : <Redirect to="/books" />
+            }
           </Route>
-          <Route path="/ListPage">
-            <ListPage />
+          {/* User: Route to List Page; 
+          NOT a user, redirect to root/auth page */}
+          <Route exact path="/books">
+            {
+              user
+                ? <ListPage />
+                : <Redirect to="/" />
+            }
           </Route>
-          <Route path="/DetailPage">
+
+          <Route exact path="/books/:id">
             <DetailPage />
           </Route>
-          <Route path="/CreatePage">
+
+          <Route exact path="/CreateBook">
             <CreatePage />
           </Route>
-          <Route path="/UpdatePage">
+
+          <Route exact path="/UpdatePage">
             <UpdatePage />
           </Route>
         </Switch>
