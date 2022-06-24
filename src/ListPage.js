@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchBooks } from './services/fetch-utils';
-import Book from './Book.js';
+import { Book } from './Book';
 
 export default function ListPage() {
   const [books, setBooks] = useState([]);
