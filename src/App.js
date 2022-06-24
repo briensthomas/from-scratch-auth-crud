@@ -7,6 +7,8 @@ import {
   Redirect
 } from 'react-router-dom';
 
+import './App.css';
+
 import AuthPage from './AuthPage';
 import ListPage from './ListPage';
 import DetailPage from './DetailPage';
@@ -40,7 +42,7 @@ export default function App() {
             </li>
             {
               user && <li>
-                <button onClick={handleLogout}>Logout Button</button>
+                <button onClick={handleLogout}>Logout</button>
               </li> 
             }
           </ul>

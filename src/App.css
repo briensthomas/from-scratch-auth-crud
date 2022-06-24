@@ -37,7 +37,22 @@
   }
 }
 
-
 ul {
   list-style: none;
+}
+
+.book-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin: 5px;
+  border: 2px solid black;
+  align-items: center;
 }

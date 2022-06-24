@@ -20,7 +20,7 @@ export async function logout() {
   await client.auth.signOut();
 }
 
-// Fetch Functions
+// CREATE book function
 export async function addNewBook(book) {
   const { data, error } = await client.from('Books')
     .insert(book)
@@ -28,9 +28,39 @@ export async function addNewBook(book) {
   return data;
 }
 
+// UPDATE book function
+export async function editBook(book, id) {
+  const { data } = await client.from('Books')
+    .update(book)
+    .match({ id: id })
+    .single();
+
+  return data;
+}
+
+// DELETE book function
+export async function deleteBook(id) {
+  const { data } = await client.from('Books')
+    .delete()
+    .match({ id: id })
+    .single();
+
+  return data;
+}
+
+// Fetch Functions
 export async function fetchBooks() {
   const { data, error } = await client.from('Books')
     .select('*');
+
+  return data;
+}
+
+export async function fetchBookById(id) {
+  const { data } = await client.from('Books')
+    .select('*')
+    .match({ id })
+    .single();
 
   return data;
 }
