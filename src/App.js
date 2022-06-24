@@ -1,17 +1,22 @@
-import React from 'react';
+import { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom';
+
 import AuthPage from './AuthPage';
 import ListPage from './ListPage';
 import DetailPage from './DetailPage';
 import CreatePage from './CreatePage';
 import UpdatePage from './UpdatePage';
+import { client } from './services/client';
 
 export default function App() {
+  const [user, setUser] = useState(client.auth.user());
+
+  
   return (
     <Router>
       <div>
@@ -23,7 +28,7 @@ export default function App() {
             <li>
               <Link to="/about">List Page</Link>
             </li>
-            <li><button>Logout</button></li>
+            <li><button>Logout Button</button></li>
           </ul>
         </nav>
 
@@ -31,7 +36,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/">
-            <AuthPage />
+            <AuthPage setUser={setUser} />
           </Route>
           <Route path="/ListPage">
             <ListPage />
