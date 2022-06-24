@@ -13,10 +13,16 @@ import CreatePage from './CreatePage';
 import UpdatePage from './UpdatePage';
 import { client } from './services/client';
 
+import { logout } from './services/fetch-utils';
+
 export default function App() {
   const [user, setUser] = useState(client.auth.user());
 
-  
+  async function handleLogout() {
+    await logout();
+    setUser('');
+  }
+
   return (
     <Router>
       <div>
@@ -28,7 +34,7 @@ export default function App() {
             <li>
               <Link to="/about">List Page</Link>
             </li>
-            <li><button>Logout Button</button></li>
+            <li><button onClick={handleLogout}>Logout Button</button></li>
           </ul>
         </nav>
 

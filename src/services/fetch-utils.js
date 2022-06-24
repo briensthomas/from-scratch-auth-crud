@@ -15,6 +15,10 @@ export async function signInUser(email, password) {
   });
 }
 
+export async function logout() {
+  await client.auth.signOut();
+}
+
 export async function fetchBooks() {
   const response = await client.from('Books')
     .select('*');
