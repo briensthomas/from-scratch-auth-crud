@@ -26,4 +26,4 @@
 
 ### Stretch goal ideas:
 - Refactor the form that we use in Update and Create to a resuable component. It will replace the form in CreatePage and UpdatePage, since those two are basically the same, with very small differences. Looking at those difference youy will be to answer the question: What props does this form component need?
-- Add a review feature that let's users write and read reviews for each item on its edit page.
+
