@@ -13,12 +13,11 @@ export default function CreatePage() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const book = await addNewBook({
+    await addNewBook({
       title: title,
       author: author,
       genre: genre
     });
-    console.log(book);
     
     push('/books');
     setTitle('');

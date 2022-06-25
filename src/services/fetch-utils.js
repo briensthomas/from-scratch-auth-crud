@@ -23,7 +23,7 @@ export async function logout() {
 
 // CREATE book function
 export async function addNewBook(book) {
-  const { data, error } = await client.from('Books')
+  const { data } = await client.from('Books')
     .insert(book)
     .single();
   return data;

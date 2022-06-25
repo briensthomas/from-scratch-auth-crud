@@ -11,6 +11,8 @@ export default function AuthPage({ setUser }) {
   const [signInPassword, setSignInPassword] = useState('');
 
   const { push } = useHistory();
+
+  
   async function handleSignUp(e) {
     e.preventDefault();
 
