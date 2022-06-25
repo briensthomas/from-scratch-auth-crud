@@ -6,6 +6,7 @@ export async function signUpUser(email, password) {
     email: email,
     password: password,
   });
+  return user;
 }
 
 export async function signInUser(email, password) {
@@ -13,7 +14,7 @@ export async function signInUser(email, password) {
     email: email,
     password: password,
   });
-
+  return user;
 }
 
 export async function logout() {
@@ -50,7 +51,7 @@ export async function deleteBook(id) {
 
 // Fetch Functions
 export async function fetchBooks() {
-  const { data, error } = await client.from('Books')
+  const { data } = await client.from('Books')
     .select('*');
 
   return data;

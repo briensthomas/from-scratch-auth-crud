@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { signUpUser, signInUser } from './services/fetch-utils';
+import { useHistory } from 'react-router-dom';
 
 
 export default function AuthPage({ setUser }) {
@@ -9,11 +10,13 @@ export default function AuthPage({ setUser }) {
   const [signInEmail, setSignInEmail] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
 
+  const { push } = useHistory();
   async function handleSignUp(e) {
     e.preventDefault();
 
     const user = await signUpUser(signUpEmail, signUpPassword);
     setUser(user);
+    push('/books');
   }
 
   async function handleSignIn(e) {
@@ -21,6 +24,7 @@ export default function AuthPage({ setUser }) {
 
     const user = await signInUser(signInEmail, signInPassword);
     setUser(user);
+    push('/books');
   }
 
   return (
